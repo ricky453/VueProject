@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                <div id="busqueda" class="col-sm-12 col-md-4">
+                <div id="busqueda" class="hidden-xs hidden-sm col-sm-12 col-md-4">
                     <h2>Filtrar por nombre:</h2>
                     <br>
                     <input class="form-control" type="text" v-model="search" placeholder="Búsqueda por nombre...">
@@ -55,7 +55,7 @@
                 <div v-for="(cliente,conta) in searchUser" class="panel col-xs-12 col-sm-12 col-md-3" id="unCliente">
                     <img class="img-rounded img-responsive center-block" id="foto" v-bind:src="cliente.picture.large">
 
-                            <h5 class="center-block" v-if="checked1"> Nombre: {{cliente.name.last}}, {{cliente.name.first}} </h5>
+                            <h5 v-if="checked1"> Nombre: {{cliente.name.last}}, {{cliente.name.first}} </h5>
                             <h6 v-if="checked2">Sexo: {{cliente.gender}} </h6>
                             <h6 v-if="checked3"> Locacion: {{cliente.location.city}}</h6>
                             <h6 v-if="checked4">Telefono: {{cliente.phone}}</h6>
