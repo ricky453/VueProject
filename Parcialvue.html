@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+
+    <title>Parcial VUE</title>
+</head>
+
+<body>
+    <div id="AppVue">
+        <div class="container">
+            <div class="row">
+                <div id="clientes" class="col-sm-12 col-md-4">
+                    <h2>Clientes:</h2>
+                    <br>
+                    <select class="form-control" v-model="cantidad">
+                            <option v-for="option in options" v-bind:value="option.cantidad">
+                                {{ option.text }}
+                            </option>
+                        </select>
+                        <br>
+                        <button class="btn btn-primary center-block" v-on:click=obtenerClientes>Obtener</button>
+                </div>
+                <div id="filtros" class="col-sm-12 col-md-4 ">
+                    <h2>Información a mostrar: </h2>
+                    <br>
+                    <div class="form-check">
+                    <label class="checkbox-inline"><input type="checkbox" v-model="checked1">Nombre</label>
+                    <label class="checkbox-inline"><input type="checkbox" v-model="checked2">Sexo</label>
+                    <label class="checkbox-inline"><input type="checkbox" v-model="checked3">Locacion</label><br>
+                    <label class="checkbox-inline"><input type="checkbox" v-model="checked4">Telefono</label>
+                    <label class="checkbox-inline"><input type="checkbox" v-model="checked5">Celular</label>
+                    <label class="checkbox-inline"><input type="checkbox" v-model="checked6">Correo</label>
+                    </div>
+                </div>
+
+                <div id="busqueda" class="col-sm-12 col-md-4">
+                    <h2>Filtrar por nombre:</h2>
+                    <br>
+                    <input class="form-control" type="text" v-model="search" placeholder="Búsqueda por nombre...">
+
+                </div>
+            </div>
+            <div class="row">
+                <br><br>
+                <div v-for="(cliente,conta) in searchUser" class="panel col-xs-12 col-sm-12 col-md-3" id="unCliente">
+                    <img class="img-rounded img-responsive center-block" id="foto" v-bind:src="cliente.picture.large">
+
+                            <h5 class="center-block" v-if="checked1"> Nombre: {{cliente.name.last}}, {{cliente.name.first}} </h5>
+                            <h6 v-if="checked2">Sexo: {{cliente.gender}} </h6>
+                            <h6 v-if="checked3"> Locacion: {{cliente.location.city}}</h6>
+                            <h6 v-if="checked4">Telefono: {{cliente.phone}}</h6>
+                            <h6 v-if="checked5">Celular: {{cliente.cell}}</h6>
+                            <h6 v-if="checked6">Correo: {{cliente.email}}</h6>
+                            <button v-on:click="aceptarCliente(conta)" class="btn btn-success">Aceptado</button>
+                            <button v-on:click="rechazarCliente(conta)" class="btn btn-danger">Rechazado</button>   
+                        <br><br>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-default navbar-fixed-bottom">
+                <div class="container"> 
+                    <span class="navbar-text pull-left">Aceptados: 
+                      <span style="width: 15px; height: 15px; margin:5px; display: inline_block; 
+                      border: 3px solid green; vertical-align: middle; color: white;
+                      border-radius: 3px; background: green ">{{aceptado}}</span> 
+                    </span>
+                    <span class="navbar-text pull-right">Rechazados:
+                        <span style="width: 15px; height: 15px; margin:5px; display: inline_block; 
+                        border: 3px solid red; vertical-align: middle; color: white;
+                        border-radius: 3px; background: red ">{{rechazado}}</span> 
+                    </span>
+                </div>
+            </div>
+        <script src="js/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+        <script src="js/main.js"></script>
+</body>
+</html>
