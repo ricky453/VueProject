@@ -3,9 +3,10 @@ var elVue = new Vue({
     data: {
         cantidad: 5,
         options: [
-            { text: 5, cantidad: 5 },
-            { text: 10, cantidad: 10 },
-            { text: 15, cantidad: 15 }
+            { text: "Cinco", cantidad: 5 },
+            { text: "Diez", cantidad: 10 },
+            { text: "Quince", cantidad: 15 },
+            { text: "Veinte", cantidad: 20 }
           ],
         clientes: [],
         aceptado: 0,
